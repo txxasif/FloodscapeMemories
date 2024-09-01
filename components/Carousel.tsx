@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import useKeypress from "react-use-keypress";
+import { useHotkeys } from "react-hotkeys-hook";
 import type { ImageProps } from "@/types";
 import { useLastViewedPhoto } from "../utils/useLastViewedPhoto";
 import SharedModal from "./SharedModal";
@@ -25,7 +25,7 @@ export default function Carousel({
     return newVal;
   }
 
-  useKeypress("Escape", () => {
+  useHotkeys("Escape", () => {
     closeModal();
   });
   console.log(currentPhoto.blurDataUrl);
@@ -37,7 +37,7 @@ export default function Carousel({
         onClick={closeModal}
       >
         <Image
-          src={currentPhoto.blurDataUrl}
+          src={currentPhoto?.blurDataUrl || "/default-image.jpg"}
           className="pointer-events-none h-full w-full"
           alt="blurred background"
           fill

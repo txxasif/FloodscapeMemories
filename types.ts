@@ -1,6 +1,7 @@
 export interface ChildrenPropsType {
   children: React.ReactNode;
 }
+
 export interface Image {
   name: string;
   dataURL: string | ArrayBuffer | null; // Store base64 encoded data

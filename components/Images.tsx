@@ -7,17 +7,13 @@ import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
 import { useSearchParams } from "next/navigation";
 import Modal from "./Modal";
 import { usePidStore } from "@/store/pid-store";
-export default function Images({
-  images,
-  pid,
-}: {
-  images: ImageProps[];
-  pid: string | undefined | null;
-}) {
-  const photoId = pid;
-  console.log(photoId);
+import Bridge from "./Icons/Bridge";
+import Logo from "./Icons/Logo";
+export default function Images({ images }: { images: ImageProps[] }) {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
-  const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
+  const lastViewedPhotoRef = useRef<HTMLButtonElement>(null);
+  const photoId = usePidStore((state) => state.pid);
+  const setPid = usePidStore((state) => state.setPid);
   useEffect(() => {
     // This effect keeps track of the last viewed photo in the modal to keep the index page in sync when the user navigates back
     if (lastViewedPhoto && !photoId) {
@@ -27,24 +23,22 @@ export default function Images({
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
   return (
-    <div className="mx-auto max-w-[1960px] p-4">
-      {photoId && (
+    <>
+      {photoId !== -10 ? (
         <Modal
           images={images}
           onClose={() => {
             setLastViewedPhoto(Number(photoId));
           }}
         />
-      )}
-      <div className="columns-1 gap-5 lg:gap-8 sm:columns-2 lg:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-8">
+      ) : null}
+      <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
         {images.map(({ id, public_id, format, blurDataUrl }) => (
-          <Link
+          <button
             key={id}
-            href={`/?photoId=${id}`}
-            as={`/p/${id}`}
             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
             //'http://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/flood/bf33db7b-ec67-4d8f-af42-e5770cbabad9.png',
-            shallow
+            onClick={() => setPid(id.toString())}
             className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
           >
             <Image
@@ -61,10 +55,10 @@ export default function Images({
               (max-width: 1536px) 33vw,
               25vw"
             />
-          </Link>
+          </button>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 //className="columns-1 gap-5 lg:gap-8 sm:columns-2 lg:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-8">

@@ -20,6 +20,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     i++;
   }
   const currentPhoto = reducedImages.find((img) => img.id === Number(pid));
+  console.log("currentPhoto", currentPhoto);
   if (currentPhoto) {
     currentPhoto.blurDataUrl = await getBase64ImageUrl(currentPhoto);
   } else {

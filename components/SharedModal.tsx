@@ -10,10 +10,11 @@ import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import { variants } from "@/utils/animationVariants";
-import downloadPhoto from "@/utils/downloadPhoto";
-import { range } from "@/utils/range";
+import { variants } from "../utils/animationVariants";
+import downloadPhoto from "../utils/downloadPhoto";
+import { range } from "../utils/range";
 import type { ImageProps, SharedModalProps } from "@/types";
+import Twitter from "./Icons/Twitter";
 
 export default function SharedModal({
   index,
@@ -32,7 +33,7 @@ export default function SharedModal({
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      if (index < images?.length! - 1) {
+      if (index < images!.length - 1) {
         changePhotoId(index + 1);
       }
     },
@@ -43,6 +44,7 @@ export default function SharedModal({
     },
     trackMouse: true,
   });
+  console.log(images);
 
   let currentImage = images ? images[index] : currentPhoto;
 
@@ -70,12 +72,10 @@ export default function SharedModal({
                 exit="exit"
                 className="absolute"
               >
-                {/*     src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v1725073216/${public_id}.${format}`}
-                 */}
                 <Image
                   src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,${
                     navigation ? "w_1280" : "w_1920"
-                  }/v1725073216//${currentImage!.public_id}.${
+                  }/v1725073216/${currentImage!.public_id}.${
                     currentImage!.format
                   }`}
                   width={navigation ? 1280 : 1920}
@@ -98,35 +98,34 @@ export default function SharedModal({
                 <>
                   {index > 0 && (
                     <button
-                      className="absolute left-3 top-1/2 transform -translate-y-1/2 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      className="absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changePhotoId(index - 1)}
-                      aria-label="Previous Image"
                     >
                       <ChevronLeftIcon className="h-6 w-6" />
                     </button>
                   )}
                   {index + 1 < images!.length && (
                     <button
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      className="absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
+                      style={{ transform: "translate3d(0, 0, 0)" }}
                       onClick={() => changePhotoId(index + 1)}
-                      aria-label="Next Image"
                     >
                       <ChevronRightIcon className="h-6 w-6" />
                     </button>
                   )}
                 </>
               )}
-              {/*     src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v1725073216/${public_id}.${format}`}
-               */}
               <div className="absolute top-0 right-0 flex items-center gap-2 p-3 text-white">
                 {navigation ? (
                   <a
-                    href={`https://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/${currentImage.public_id}.${currentImage.format}`}
+                    href={`https://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/${
+                      currentImage!.public_id
+                    }.${currentImage!.format}`}
                     className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                     target="_blank"
                     title="Open fullsize version"
                     rel="noreferrer"
-                    aria-label="Open full-size image"
                   >
                     <ArrowTopRightOnSquareIcon className="h-5 w-5" />
                   </a>
@@ -135,24 +134,23 @@ export default function SharedModal({
                     href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Next.js%20Conf!%0A%0Ahttps://nextjsconf-pics.vercel.app/p/${index}`}
                     className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                     target="_blank"
-                    title="Tweet this image"
+                    title="Open fullsize version"
                     rel="noreferrer"
-                    aria-label="Tweet this image"
                   >
-                    {/* <Twitter className="h-5 w-5" /> */}
+                    <Twitter className="h-5 w-5" />
                   </a>
                 )}
-
                 <button
                   onClick={() =>
                     downloadPhoto(
-                      `https://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/${currentImage.public_id}.${currentImage.format}`,
+                      `https://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/${
+                        currentImage!.public_id
+                      }.${currentImage!.format}`,
                       `${index}.jpg`
                     )
                   }
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
                   title="Download fullsize version"
-                  aria-label="Download full-size image"
                 >
                   <ArrowDownTrayIcon className="h-5 w-5" />
                 </button>
@@ -161,7 +159,6 @@ export default function SharedModal({
                 <button
                   onClick={() => closeModal()}
                   className="rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
-                  aria-label={navigation ? "Close" : "Go back"}
                 >
                   {navigation ? (
                     <XMarkIcon className="h-5 w-5" />
@@ -201,12 +198,9 @@ export default function SharedModal({
                       } ${id === 0 ? "rounded-l-md" : ""} ${
                         id === images!.length - 1 ? "rounded-r-md" : ""
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
-                      aria-label={`Thumbnail ${id + 1}`}
                     >
-                      {/*     src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v1725073216/${public_id}.${format}`}
-                       */}
                       <Image
-                        alt={`Thumbnail ${id + 1}`}
+                        alt="small photos on the bottom"
                         width={180}
                         height={120}
                         className={`${

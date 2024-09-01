@@ -1,10 +1,10 @@
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { Dialog } from "@headlessui/react";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
-import useKeypress from "react-use-keypress";
-import { ImageProps } from "@/types";
-import SharedModal from "./SharedModal";
+
+import { useHotkeys } from "react-hotkeys-hook";
+import type { ImageProps } from "@/types";
+import SharedModal from "@/components/SharedModal";
 import { usePidStore } from "@/store/pid-store";
 
 export default function Modal({
@@ -17,21 +17,18 @@ export default function Modal({
   let overlayRef = useRef<HTMLDivElement | null>(null);
   const photoId = usePidStore((state) => state.pid);
   const setPid = usePidStore((state) => state.setPid);
-  const router = useRouter();
   let index = Number(photoId);
 
   const [direction, setDirection] = useState(0);
   const [curIndex, setCurIndex] = useState(index);
 
   function handleClose() {
-    router.push("/");
-    setPid(null);
-
+    // router.push("/");
+    setPid(-10);
     if (onClose) {
       onClose();
     }
   }
-
   function changePhotoId(newVal: number) {
     if (newVal > index) {
       setDirection(1);
@@ -39,10 +36,10 @@ export default function Modal({
       setDirection(-1);
     }
     setCurIndex(newVal);
-    router.push(`/p/${newVal}`);
+    setPid(newVal);
   }
 
-  useKeypress("ArrowRight", () => {
+  useHotkeys("ArrowRight", () => {
     console.log("ArrowRight");
 
     if (index + 1 < images.length) {
@@ -50,7 +47,7 @@ export default function Modal({
     }
   });
 
-  useKeypress("ArrowLeft", () => {
+  useHotkeys("ArrowLeft", () => {
     if (index > 0) {
       changePhotoId(index - 1);
     }
@@ -58,30 +55,28 @@ export default function Modal({
 
   return (
     <Dialog
+      static
       open={true}
       onClose={handleClose}
+      initialFocus={overlayRef}
       className="fixed inset-0 z-10 flex items-center justify-center"
     >
-      {/* Manually creating the overlay */}
-      <motion.div
+      <Dialog.Overlay
         ref={overlayRef}
-        className="fixed inset-0 bg-black/70 backdrop-blur-2xl"
+        as={motion.div}
+        key="backdrop"
+        className="fixed inset-0 z-30 bg-black/70 backdrop-blur-2xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
-
-      <div className="relative z-50">
-        <DialogPanel className="max-w-lg p-6 space-y-4 bg-white rounded-md">
-          <SharedModal
-            index={curIndex}
-            direction={direction}
-            images={images}
-            changePhotoId={changePhotoId}
-            closeModal={handleClose}
-            navigation={true}
-          />
-        </DialogPanel>
-      </div>
+      <SharedModal
+        index={curIndex}
+        direction={direction}
+        images={images}
+        changePhotoId={changePhotoId}
+        closeModal={handleClose}
+        navigation={true}
+      />
     </Dialog>
   );
 }

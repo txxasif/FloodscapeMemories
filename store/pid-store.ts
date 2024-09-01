@@ -11,6 +11,6 @@ export type Actions = {
 };
 
 export const usePidStore = create<State & Actions>()((set) => ({
-  pid: null,
-  setPid: (pid) => set({ pid: pid }),
+  pid: -10,
+  setPid: (pid: string | number | null) => set({ pid: pid }),
 }));
