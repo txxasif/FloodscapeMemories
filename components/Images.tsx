@@ -4,10 +4,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
-import { useRouter } from "next/router";
-export default function Images({ images }: { images: ImageProps[] }) {
-  const router = useRouter();
-  const { photoId } = router.query;
+import { useSearchParams } from "next/navigation";
+import Modal from "./Modal";
+import { usePidStore } from "@/store/pid-store";
+export default function Images({
+  images,
+  pid,
+}: {
+  images: ImageProps[];
+  pid: string | undefined | null;
+}) {
+  const photoId = pid;
+  console.log(photoId);
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
   const lastViewedPhotoRef = useRef<HTMLAnchorElement>(null);
   useEffect(() => {
@@ -19,7 +27,15 @@ export default function Images({ images }: { images: ImageProps[] }) {
     }
   }, [photoId, lastViewedPhoto, setLastViewedPhoto]);
   return (
-    <div className="p-5 md:p-10">
+    <div className="mx-auto max-w-[1960px] p-4">
+      {photoId && (
+        <Modal
+          images={images}
+          onClose={() => {
+            setLastViewedPhoto(Number(photoId));
+          }}
+        />
+      )}
       <div className="columns-1 gap-5 lg:gap-8 sm:columns-2 lg:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-8">
         {images.map(({ id, public_id, format, blurDataUrl }) => (
           <Link
@@ -51,3 +67,4 @@ export default function Images({ images }: { images: ImageProps[] }) {
     </div>
   );
 }
+//className="columns-1 gap-5 lg:gap-8 sm:columns-2 lg:columns-3 xl:columns-4 [&>img:not(:first-child)]:mt-5 lg:[&>img:not(:first-child)]:mt-8">

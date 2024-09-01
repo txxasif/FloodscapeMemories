@@ -1,4 +1,3 @@
-import { config } from "@/config";
 import axios from "axios";
 const host = "http://localhost:3000";
 import { Image, ImageProps } from "@/types";
@@ -17,4 +16,14 @@ export async function getImages(): Promise<ImageProps[]> {
   return await axiosInstance
     .get(`${host}/api/upload/images`)
     .then((res) => res.data.data);
+}
+export async function getImageById(id: number): Promise<ImageProps> {
+  console.log(id);
+
+  const data = await axiosInstance
+    .get(`${host}/api/image?pid=${id}`)
+    .then((res) => res.data.data);
+  console.log(data);
+
+  return data;
 }
