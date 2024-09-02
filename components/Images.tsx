@@ -1,4 +1,5 @@
 "use client";
+import BlurFade from "@/components/magicui/blur-fade";
 import { ImageProps } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,7 +12,7 @@ import Bridge from "./Icons/Bridge";
 import Logo from "./Icons/Logo";
 export default function Images({ images }: { images: ImageProps[] }) {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
-  const lastViewedPhotoRef = useRef<HTMLButtonElement>(null);
+  const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
   const photoId = usePidStore((state) => state.pid);
   const setPid = usePidStore((state) => state.setPid);
   useEffect(() => {
@@ -34,28 +35,30 @@ export default function Images({ images }: { images: ImageProps[] }) {
       ) : null}
       <div className="columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4">
         {images.map(({ id, public_id, format, blurDataUrl }) => (
-          <button
+          <div
             key={id}
             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
             //'http://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/flood/bf33db7b-ec67-4d8f-af42-e5770cbabad9.png',
             onClick={() => setPid(id.toString())}
             className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"
           >
-            <Image
-              alt="Next.js Conf photo"
-              className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
-              style={{ transform: "translate3d(0, 0, 0)" }}
-              placeholder="blur"
-              blurDataURL={blurDataUrl}
-              src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v1725073216/${public_id}.${format}`}
-              width={720}
-              height={480}
-              sizes="(max-width: 640px) 100vw,
+            <BlurFade inView>
+              <Image
+                alt="Next.js Conf photo"
+                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
+                style={{ transform: "translate3d(0, 0, 0)" }}
+                placeholder="blur"
+                blurDataURL={blurDataUrl}
+                src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v1725073216/${public_id}.${format}`}
+                width={720}
+                height={480}
+                sizes="(max-width: 640px) 100vw,
               (max-width: 1280px) 50vw,
               (max-width: 1536px) 33vw,
               25vw"
-            />
-          </button>
+              />{" "}
+            </BlurFade>
+          </div>
         ))}
       </div>
     </>

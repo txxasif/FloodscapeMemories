@@ -24,3 +24,9 @@ export interface SharedModalProps {
   navigation: boolean;
   direction?: number;
 }
+export interface NotificationItem {
+  name: string;
+  message: string;
+  icon: string;
+  time: string;
+}
