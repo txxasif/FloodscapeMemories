@@ -3,7 +3,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
 
 interface AvatarCirclesProps {
   className?: string;
