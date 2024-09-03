@@ -1,29 +1,15 @@
-"use client";
-import Images from "@/components/Images";
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-import { getImages } from "@/helper/api";
-import { AnimatedLoadingBar } from "@/components/ui/AnimatedLoadingBar";
+import { Notifications } from "@/components/ui/Notification";
+import PhotoSection from "@/components/PhotoSection";
+import WelcomeMessage from "@/components/WelcomeMessage";
+import Mock from "@/components/mock";
 
-export default function Home() {
-  console.log(process.env.LOCAL_URL, "local host");
-
-  const { data: result = [], isPending } = useQuery({
-    queryKey: ["images"],
-    queryFn: getImages,
-  });
-  if (isPending) {
-    return <AnimatedLoadingBar />;
-  }
-
+export default function About() {
   return (
-    <main className="mx-auto max-w-[1960px] p-4 mt-5">
-      <Images images={result} />
+    <main className="flex flex-col min-h-screen   ">
+      <WelcomeMessage />
+      <PhotoSection />
+      <Notifications />
+      <Mock />
     </main>
   );
 }
