@@ -43,7 +43,7 @@ export function Notifications({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex w-full flex-col  p-6 overflow-hidden rounded-lg h-[70vh] md:h-screen bg-background space-y-10",
+        "relative flex w-full flex-col  p-6 overflow-hidden rounded-lg h-[75vh] md:h-screen bg-background space-y-10",
         className
       )}
     >
