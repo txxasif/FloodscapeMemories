@@ -2,7 +2,7 @@ import axios from "axios";
 const host = "http://localhost:3000";
 import { Image, ImageProps } from "@/types";
 const axiosInstance = axios.create({
-  baseURL: process.env.Backend_Url,
+  baseURL: process.env.LOCAL_URL,
 });
 
 export async function uploadImages(data: Image[] | undefined) {

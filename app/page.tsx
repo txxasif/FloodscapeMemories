@@ -8,7 +8,8 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { getImages } from "@/helper/api";
-import { LadingBar } from "@/components/ui/AnimatedLoadingBar";
+import { AnimatedLoadingBar } from "@/components/ui/AnimatedLoadingBar";
+
 export default function Home() {
   console.log(process.env.LOCAL_URL, "local host");
 
@@ -17,7 +18,7 @@ export default function Home() {
     queryFn: getImages,
   });
   if (isPending) {
-    return;
+    return <AnimatedLoadingBar />;
   }
 
   return (

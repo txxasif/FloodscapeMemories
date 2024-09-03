@@ -5,6 +5,7 @@ import { AnimatedList } from "@/components/magicui/animated-list";
 import { NotificationItem } from "@/types";
 import { notifications } from "@/helper/data";
 import AvatarCircles from "./Avatar";
+import IntroText from "./IntroText";
 const Notification = ({ name, message, icon, time }: NotificationItem) => {
   return (
     <figure
@@ -42,10 +43,16 @@ export function Notifications({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative flex w-full flex-col p-6 overflow-hidden rounded-lg md:min-h-screen bg-background ",
+        "relative flex w-full flex-col  p-6 overflow-hidden rounded-lg md:min-h-screen bg-background space-y-10",
         className
       )}
     >
+      <IntroText
+        bgColor="bg-none"
+        borderColor="border-white"
+        text="Photo Section"
+      />
+
       <AnimatedList>
         {notifications.map((item, idx) => (
           <Notification {...item} key={idx} />

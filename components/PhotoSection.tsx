@@ -1,9 +1,15 @@
 import { photoSectionData } from "@/helper/data";
 import Image from "next/image";
+import IntroText from "./ui/IntroText";
 
 const PhotoSection = () => {
   return (
     <div className="font-[sans-serif] px-4 py-8 ">
+      <IntroText
+        bgColor="bg-none"
+        borderColor="border-white"
+        text="Photo Section"
+      />
       <div className="lg:max-w-5xl sm:max-w-2xl mx-auto">
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 max-sm:gap-12 max-md:justify-center mt-16">
           {photoSectionData.map((member, index) => (

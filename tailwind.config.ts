@@ -27,11 +27,6 @@ const config = {
         "taller-than-854": { raw: "(min-height: 854px)" },
       },
       keyframes: {
-        "border-beam": {
-          "100%": {
-            "offset-distance": "100%",
-          },
-        },
         ripple: {
           "0%, 100%": {
             transform: "translate(-50%, -50%) scale(1)",
@@ -47,6 +42,11 @@ const config = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
+        },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
         },
       },
       animation: {
