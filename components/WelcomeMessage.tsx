@@ -1,10 +1,20 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BlurFade from "./magicui/blur-fade";
 import BoxReveal from "./magicui/box-reveal";
 import { useRef } from "react";
+import PulsatingButton from "./magicui/pulsating-button";
 
 const WelcomeMessage = () => {
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 600); // 0.5 seconds
+
+    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+  }, []);
   return (
     <main>
       <div className="py-12">
@@ -29,6 +39,16 @@ const WelcomeMessage = () => {
               </BoxReveal>
             </div>
           </div>
+        </div>
+        <div className="flex justify-center w-full">
+          {showButton ? (
+            <PulsatingButton href="/memories">Explore Memories</PulsatingButton>
+          ) : (
+            <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+              <div className="px-2 py-2"> Explore Memories</div>
+            </BoxReveal>
+          )}
+          ;
         </div>
       </div>
     </main>

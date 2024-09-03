@@ -1,15 +1,12 @@
 "use client";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ImageProps } from "@/types";
-import Link from "next/link";
 import Image from "next/image";
 import { useRef, useEffect } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
-import { useSearchParams } from "next/navigation";
 import Modal from "./Modal";
 import { usePidStore } from "@/store/pid-store";
-import Bridge from "./Icons/Bridge";
-import Logo from "./Icons/Logo";
+
 export default function Images({ images }: { images: ImageProps[] }) {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
   const lastViewedPhotoRef = useRef<HTMLDivElement>(null);
