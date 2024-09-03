@@ -14,7 +14,7 @@ export async function uploadImages(data: Image[] | undefined) {
 
 export async function getImages(): Promise<ImageProps[]> {
   return await axiosInstance
-    .get(`${host}/api/upload/images`)
+    .get(`https://floodscape-memories.vercel.app/api/upload/images`)
     .then((res) => res.data.data);
 }
 export async function getImageById(id: number): Promise<ImageProps> {
