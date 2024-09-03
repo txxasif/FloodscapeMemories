@@ -26,9 +26,7 @@ export function FilleManager() {
         <Folder element="memories" value="1">
           <Folder value="2" element="2023">
             <File value="3">
-              <Link href={"/memories/winter-memories"}>
-                winter-memories.html
-              </Link>
+              <Link href={"/memories/winter-memories"}>winter.html</Link>
             </File>
           </Folder>
           <Folder value="4" element="2024">
