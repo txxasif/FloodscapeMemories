@@ -1,17 +1,20 @@
 import React from "react";
 import BlurFade from "./magicui/blur-fade";
+import BoxReveal from "./magicui/box-reveal";
 
 const WelcomeMessage = () => {
   return (
-    <BlurFade inView>
-      <main>
-        <div className="py-12">
-          <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div className="overflow-hidden  sm:rounded-lg">
-              <div className="p-6  border-gray-700 sm:px-20">
+    <main>
+      <div className="py-12">
+        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="overflow-hidden  sm:rounded-lg">
+            <div className="p-6  border-gray-700 sm:px-20">
+              <BoxReveal boxColor={"#5046e6"} duration={0.5}>
                 <div className="mt-6 text-xl text-white">
                   Welcome to Floodscape Memories!
                 </div>
+              </BoxReveal>
+              <BoxReveal boxColor={"#5046e6"} duration={0.5}>
                 <div className="mt-6 text-white opacity-80 text-justify">
                   {`  Welcome to Floodscape Memories, a special place where we, as a
                 close-knit group of friends who feel like family, come together
@@ -21,12 +24,12 @@ const WelcomeMessage = () => {
                 build our story, we'll keep adding to this collection, ensuring
                 that these moments stay with us for years to come.`}
                 </div>
-              </div>
+              </BoxReveal>
             </div>
           </div>
         </div>
-      </main>
-    </BlurFade>
+      </div>
+    </main>
   );
 };
 
