@@ -26,7 +26,7 @@ const Header = () => {
             About Us
           </Link>
         </CoolMode>
-        <Link href={"#"}>Photo Gallery</Link>
+        <Link href={"/memories"}>Memories</Link>
       </div>
     </header>
   );
