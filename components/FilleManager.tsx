@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function FilleManager() {
   return (
-    <div className="relative flex h-fit w-2/3 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+    <div className="relative flex h-fit  w-5/6 md:w-2/3 flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <Tree
         className="p-2 overflow-hidden rounded-md bg-background"
         initialSelectedId="7"
