@@ -4,22 +4,21 @@ import PhotoSection from "@/components/PhotoSection";
 import { BorderBeamWrapper } from "@/components/ui/BorderBeam";
 import { AnimatedLoadingBar } from "@/components/ui/AnimatedLoadingBar";
 import WelcomeMessage from "@/components/WelcomeMessage";
+import Mock from "@/components/mock";
 
 export default function About() {
   return (
     <main className="flex flex-col min-h-screen   ">
       <WelcomeMessage />
-      {/* <BorderBeamWrapper
-        size={300}
-        duration={10}
-        delay={5}
-        colorFrom="#3b82f6"
-        colorTo="#8b5cf6"
-        wrapperClassName="w-full overflow-hidden container"
-      >   </BorderBeamWrapper> */}
       <PhotoSection />
       <Notifications />
-      {/* <div className="mx-auto w-full max-w-2xl space-y-8">
+      <Mock />
+    </main>
+  );
+}
+
+{
+  /* <div className="mx-auto w-full max-w-2xl space-y-8">
         <Image
           src={"/cover.jpg"}
           alt="logo"
@@ -30,8 +29,15 @@ export default function About() {
               (max-width: 1536px) 33vw,
               25vw"
         />
-      </div> */}
-      <div></div>
-    </main>
-  );
+      </div> */
+}
+{
+  /* <BorderBeamWrapper
+        size={300}
+        duration={10}
+        delay={5}
+        colorFrom="#3b82f6"
+        colorTo="#8b5cf6"
+        wrapperClassName="w-full overflow-hidden container"
+      >   </BorderBeamWrapper> */
 }

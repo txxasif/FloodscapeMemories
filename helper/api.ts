@@ -11,10 +11,10 @@ export async function uploadImages(data: Image[] | undefined) {
 
   return await axiosInstance.post(`${host}/api/upload/images`, data);
 }
-
+// https://floodscape-memories.vercel.app
 export async function getImages(): Promise<ImageProps[]> {
   return await axiosInstance
-    .get(`https://floodscape-memories.vercel.app/api/upload/images`)
+    .get(`/api/upload/images`)
     .then((res) => res.data.data);
 }
 export async function getImageById(id: number): Promise<ImageProps> {
