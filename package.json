@@ -38,6 +38,7 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
     "@types/imagemin": "^9.0.0",
     "@types/imagemin-jpegtran": "^5.0.4",
     "@types/node": "^20",
