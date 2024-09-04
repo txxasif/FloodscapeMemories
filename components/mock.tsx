@@ -8,6 +8,73 @@ const data = [
   "/photo/4.JPG",
   "/photo/5.JPG",
 ];
+export const Gallery = () => {
+  return (
+    <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
+      <div className="-m-1 flex flex-wrap md:-m-2">
+        <div className="flex w-1/2 flex-wrap">
+          <div className="w-1/2 p-1 md:p-2">
+            <Image
+              src={data[0]}
+              width={400}
+              height={300}
+              alt="gallery"
+              className="block h-full w-full rounded-lg object-cover object-center"
+            />
+          </div>
+          <div className="w-1/2 p-1 md:p-2">
+            <Image
+              src={data[1]}
+              alt="Team tailwind section"
+              width={400}
+              height={300}
+              className="block h-full w-full rounded-lg object-cover object-center"
+            />
+          </div>
+          <div className="w-full p-1 md:p-2">
+            <Image
+              className="block h-full w-full rounded-lg object-cover object-center"
+              src={data[2]}
+              alt="Team tailwind section"
+              width={400}
+              height={300}
+            />
+          </div>
+        </div>
+        <div className="flex w-1/2 flex-wrap">
+          <div className="w-full p-1 md:p-2">
+            <Image
+              alt="gallery"
+              className="block h-full w-full rounded-lg object-cover object-center"
+              src={data[3]}
+              width={400}
+              height={300}
+            />
+          </div>
+          <div className="w-1/2 p-1 md:p-2">
+            <Image
+              alt="gallery"
+              className="block h-full w-full rounded-lg object-cover object-center"
+              src={data[4]}
+              width={400}
+              height={300}
+            />
+          </div>
+          <div className="w-1/2 p-1 md:p-2">
+            <Image
+              alt="gallery"
+              className="block h-full w-full rounded-lg object-cover object-center"
+              src={data[5]}
+              width={400}
+              height={300}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Mock() {
   return (
     <section className="py-24 ">
