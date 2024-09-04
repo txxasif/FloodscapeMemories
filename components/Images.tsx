@@ -36,6 +36,7 @@ export default function Images({ images }: { images: ImageProps[] }) {
           <div
             key={id}
             ref={id === Number(lastViewedPhoto) ? lastViewedPhotoRef : null}
+            //https://res.cloudinary.com/dlqfvjmpm/image/upload/v1725435632/flood/hqwsvf6kxdhvaxdhtypp.jpg
             //'http://res.cloudinary.com/dupffxzyk/image/upload/v1725073216/flood/bf33db7b-ec67-4d8f-af42-e5770cbabad9.png',
             onClick={() => setPid(id.toString())}
             className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight"

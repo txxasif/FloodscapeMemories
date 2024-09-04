@@ -5,9 +5,12 @@ import { Image, ImageProps } from "@/types";
 import getBase64ImageUrl from "@/utils/generateBlurPlaceholder";
 import { UploadApiResponse } from "cloudinary";
 import { getAllWinterImagesFromCloudinary } from "@/helper/getImagesHelper";
+import { config } from "@/config";
 
 export async function GET() {
   const images = await getAllWinterImagesFromCloudinary();
+  console.log(config.CLOUD_NAME);
+
   let reducedImages: ImageProps[] = [];
   let i = 0;
   for (let result of images) {
@@ -21,6 +24,7 @@ export async function GET() {
     });
     i++;
   }
+
   const blurImagePromises = images.map((image: ImageProps) => {
     return getBase64ImageUrl(image);
   });
