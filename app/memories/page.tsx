@@ -7,7 +7,7 @@ import AnimatedCircularProgressBar from "@/components/magicui/animated-circular-
 import AnimatedImages from "@/components/MemoryCard";
 export default function Memories() {
   return (
-    <div className="container">
+    <div className="">
       <AnimatedImages />
     </div>
     // <main className="w-full min-h-[80vh] flex flex-col   px-4">
