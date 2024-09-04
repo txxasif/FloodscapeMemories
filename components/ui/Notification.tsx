@@ -50,7 +50,7 @@ export function Notifications({ className }: { className?: string }) {
       <IntroText
         bgColor="bg-none"
         borderColor="border-white"
-        text="Our Daily Conversation"
+        text="Conversation"
       />
 
       <AnimatedList>
