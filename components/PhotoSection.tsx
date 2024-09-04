@@ -7,7 +7,7 @@ const PhotoSection = () => {
     <div className="font-[sans-serif] px-4  ">
       <IntroText bgColor="bg-none" borderColor="border-white" text="Members" />
       <div className="lg:max-w-5xl sm:max-w-2xl mx-auto">
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8 max-sm:gap-12 max-md:justify-center mt-16">
+        <div className="grid lg:grid-cols-3 grid-cols-2 gap-8 max-sm:gap-12 max-md:justify-center mt-16">
           {photoSectionData.map((member, index) => (
             <div key={index} className="flex items-center">
               <Image

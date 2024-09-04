@@ -8,9 +8,9 @@ export default function About() {
   return (
     <main className="flex flex-col min-h-screen   ">
       <WelcomeMessage />
+      <Gallery />
       <PhotoSection />
       <Notifications />
-      <Gallery />
     </main>
   );
 }
