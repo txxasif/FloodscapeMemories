@@ -17,6 +17,7 @@ export async function GET() {
       width: result.width,
       public_id: result.public_id,
       format: result.format,
+      version: result.version,
     });
     i++;
   }
@@ -33,23 +34,4 @@ export async function GET() {
     { message: "Done!", data: reducedImages },
     { status: 200 }
   );
-}
-export async function POST(req: NextRequest): Promise<NextResponse> {
-  const body = await req.json();
-
-  for (const file of body) {
-    const profilePublicId = uuidV4();
-
-    if (file.dataURL != null) {
-      const uploadResult: UploadApiResponse = (await uploadImagesToCloudinary(
-        file.dataURL,
-        `${profilePublicId}`,
-        true,
-        true
-      )) as UploadApiResponse;
-      console.log(uploadResult.secure_url);
-    }
-  }
-
-  return NextResponse.json({ message: "Done!" }, { status: 200 });
 }

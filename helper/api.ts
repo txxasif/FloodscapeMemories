@@ -14,9 +14,15 @@ export async function uploadImages(data: Image[] | undefined) {
 // https://floodscape-memories.vercel.app
 export async function getImages(): Promise<ImageProps[]> {
   return await axiosInstance
-    .get(`/api/upload/images`)
+    .get(`/api/images/flood`)
     .then((res) => res.data.data);
 }
+export async function getWinterImages(): Promise<ImageProps[]> {
+  return await axiosInstance
+    .get(`/api/images/winter`)
+    .then((res) => res.data.data);
+}
+
 export async function getImageById(id: number): Promise<ImageProps> {
   console.log(id);
 

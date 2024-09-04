@@ -7,13 +7,13 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
-import { getImages } from "@/helper/api";
+import { getWinterImages } from "@/helper/api";
 import { AnimatedLoadingBar } from "@/components/ui/AnimatedLoadingBar";
 
 export default function Home() {
   const { data: result = [], isPending } = useQuery({
     queryKey: ["images"],
-    queryFn: getImages,
+    queryFn: getWinterImages,
   });
   if (isPending) {
     return <AnimatedLoadingBar />;

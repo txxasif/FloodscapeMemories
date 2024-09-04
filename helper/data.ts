@@ -8,6 +8,7 @@ let Persons = {
   Jidan: { url: "/Jidan.jpg", name: "হিমু", nickName: "Jidan" },
   Lincon: { url: "/Lincon.jpg", name: "কাগা", nickName: "Lincon" },
   Sakib: { url: "/Sakib.jpg", name: "সাকিব সাহেব", nickName: "Sakib" },
+  Birag: { url: "/Birag.jpg", name: "বীরাগ", nickName: "Birag" },
 };
 
 export let notifications: NotificationItem[] = [
@@ -26,14 +27,26 @@ export let notifications: NotificationItem[] = [
   {
     name: Persons.Jidan.name,
     message: "মতিগঞ্জ আইয়ের..",
-    time: "5m ago",
+    time: "3: 32 PM",
     icon: Persons.Jidan.url,
   },
   {
     name: Persons.Rimon.name,
     message: "কাগার দোয়ানে আইয়ো",
-    time: "2m ago",
+    time: "3: 33 PM",
     icon: Persons.Rimon.url,
+  },
+  {
+    name: Persons.Tushar.name,
+    message: "আইয়ো আইয়ো আইয়ো",
+    time: "3: 34 PM",
+    icon: Persons.Tushar.url,
+  },
+  {
+    name: Persons.Anik.name,
+    message: "আইয়ের ভাইয়া। ",
+    time: "3: 35 PM",
+    icon: Persons.Anik.url,
   },
 ];
 
