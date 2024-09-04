@@ -1,5 +1,6 @@
 import Image from "next/image";
 import IntroText from "./ui/IntroText";
+import BlurFade from "./magicui/blur-fade";
 
 const data = [
   "/photo/0.jpg",

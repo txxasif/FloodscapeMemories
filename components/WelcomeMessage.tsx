@@ -22,13 +22,13 @@ const WelcomeMessage = () => {
           <div className="overflow-hidden  sm:rounded-lg">
             <div className="p-6  border-gray-700 sm:px-20">
               <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-                <div className="mt-6 text-xl text-white">
+                <div className="mt-6 text-xl text-white font-mono">
                   Welcome to Floodscape Memories!
                 </div>
               </BoxReveal>
               <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-                <div className="mt-6 text-white opacity-80 text-justify">
-                  {`  Welcome to Floodscape Memories, a special place where we, as a
+                <div className="mt-6 font-mono text-white opacity-80 text-justify">
+                  {`  Floodscape Memories, a special place where we, as a
                 close-knit group of friends who feel like family, come together
                 to preserve our shared experiences. This website holds the
                 photos and memories from the flood that impacted Feni, a time
@@ -45,7 +45,7 @@ const WelcomeMessage = () => {
             <PulsatingButton href="/memories">Explore Memories</PulsatingButton>
           ) : (
             <BoxReveal boxColor={"#5046e6"} duration={0.5}>
-              <div className="px-2 py-2"> Explore Memories</div>
+              <div className=" font-mono px-2 py-2"> Explore Memories</div>
             </BoxReveal>
           )}
           ;
