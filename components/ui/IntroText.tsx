@@ -15,7 +15,9 @@ const IntroText: React.FC<HeadingWithBorderProps> = ({
   bgColor = "bg-black",
   className = "",
 }) => (
-  <h2 className={`flex flex-row flex-nowrap items-center mt-24 ${className}`}>
+  <h2
+    className={`flex  font-mono flex-row flex-nowrap items-center mt-24 ${className}`}
+  >
     <span className={`flex-grow block border-t ${borderColor}`}></span>
     <span
       className={`flex-none block mx-4 px-4 py-2.5 text-xl rounded leading-none font-medium ${bgColor} ${textColor}`}
