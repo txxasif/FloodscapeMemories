@@ -31,7 +31,7 @@ export async function GET() {
   }
 
   return NextResponse.json(
-    { message: "Done!", data: reducedImages },
+    { message: "Done!", data: reducedImages, images },
     { status: 200 }
   );
 }

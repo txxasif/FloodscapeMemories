@@ -6,6 +6,7 @@ import { useRef, useEffect } from "react";
 import { useLastViewedPhoto } from "@/utils/useLastViewedPhoto";
 import Modal from "./Modal";
 import { usePidStore } from "@/store/pid-store";
+import { config } from "@/config";
 
 export default function Images({ images }: { images: ImageProps[] }) {
   const [lastViewedPhoto, setLastViewedPhoto] = useLastViewedPhoto();
@@ -46,7 +47,7 @@ export default function Images({ images }: { images: ImageProps[] }) {
                 style={{ transform: "translate3d(0, 0, 0)" }}
                 placeholder="blur"
                 blurDataURL={blurDataUrl}
-                src={`https://res.cloudinary.com/dupffxzyk/image/upload/c_scale,w_720/v${version}/${public_id}.${format}`}
+                src={`https://res.cloudinary.com/${config.CLOUD_NAME}/image/upload/c_scale,w_720/v${version}/${public_id}.${format}`}
                 width={720}
                 height={480}
                 sizes="(max-width: 640px) 10v172539640vw,
