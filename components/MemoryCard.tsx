@@ -5,7 +5,7 @@ const AnimatedImages: React.FC = () => {
   return (
     <section className="bg-zinc-50 overflow-hidden">
       <div className="max-w-screen-xl 2xl:max-w-screen-3xl px-8 md:px-12 mx-auto py-12 lg:py-24 space-y-24 h-svh flex flex-col justify-center">
-        <div className="flex flex-col sm:flex-row mx-auto space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="flex flex-row mx-auto space-y-4 sm:space-y-0 sm:space-x-4">
           {/* Image Card Component */}
           {[
             {
