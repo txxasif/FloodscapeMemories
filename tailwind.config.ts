@@ -69,7 +69,7 @@ const config = {
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
-        "fade-in-out": "fade-in-out-scale 2s ease-in-out infinite",
+        "fade-in-out": "fade-in-out 2s ease-in-out infinite",
       },
     },
   },
