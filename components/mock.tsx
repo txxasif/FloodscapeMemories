@@ -10,7 +10,7 @@ const data = [
 ];
 export const Gallery = () => {
   return (
-    <div>
+    <div className="py-10">
       <IntroText bgColor="bg-none" borderColor="border-white" text="Photos" />
       <div className="container mx-auto px-5 py-2 lg:px-32 lg:pt-24">
         <div className="-m-1 flex flex-wrap md:-m-2">
