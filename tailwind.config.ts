@@ -21,12 +21,21 @@ const config = {
       boxShadow: {
         highlight: "inset 0 0 0 1px rgba(255, 255, 255, 0.05)",
       },
+
       screens: {
         narrow: { raw: "(max-aspect-ratio: 3 / 2)" },
         wide: { raw: "(min-aspect-ratio: 3 / 2)" },
         "taller-than-854": { raw: "(min-height: 854px)" },
       },
       keyframes: {
+        "fade-in-out": {
+          "0%, 100%": { opacity: "0.3" },
+          "50%": { opacity: "1.2" },
+        },
+        "fade-in-out-scale": {
+          "0%, 100%": { opacity: "0.5", transform: "scale(1)" }, // Start and end with partial visibility and normal size
+          "50%": { opacity: "1", transform: "scale(1.2)" }, // Fully visible and 20% larger at the midpoint
+        },
         pulse: {
           "0%, 100%": { boxShadow: "0 0 0 0 var(--pulse-color)" },
           "50%": { boxShadow: "0 0 0 8px var(--pulse-color)" },
@@ -60,6 +69,7 @@ const config = {
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
+        "fade-in-out": "fade-in-out-scale 2s ease-in-out infinite",
       },
     },
   },

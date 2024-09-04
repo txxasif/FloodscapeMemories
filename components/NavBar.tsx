@@ -1,8 +1,20 @@
 "use client";
 import Image from "next/image";
-import React from "react";
 import Link from "next/link";
 import { CoolMode } from "@/components/magicui/cool-mode";
+import React, { ReactNode } from "react";
+
+interface AnimatedImageProps {
+  children: ReactNode;
+}
+
+const AnimatedImage: React.FC<AnimatedImageProps> = ({ children }) => {
+  return (
+    <div className="w-full h-full flex justify-center items-center">
+      <div className="animate-fade-in-out">{children}</div>
+    </div>
+  );
+};
 
 const Header = () => {
   return (
@@ -10,13 +22,16 @@ const Header = () => {
       <div>
         <CoolMode>
           <Link href={"/"}>
-            <Image
-              className=""
-              src={"/logo-final.svg"}
-              width={100}
-              height={100}
-              alt="logo"
-            />
+            <AnimatedImage>
+              {" "}
+              <Image
+                className=""
+                src={"/logo-final.svg"}
+                width={100}
+                height={100}
+                alt="logo"
+              />
+            </AnimatedImage>
           </Link>
         </CoolMode>
       </div>
