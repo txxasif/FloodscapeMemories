@@ -17,6 +17,7 @@ export async function GET() {
       width: result.width,
       public_id: result.public_id,
       format: result.format,
+      version: result.version,
     });
     i++;
   }
