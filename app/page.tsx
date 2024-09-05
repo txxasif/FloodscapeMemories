@@ -5,7 +5,7 @@ import { Gallery } from "@/components/mock";
 
 export default function About() {
   return (
-    <main className="flex flex-col min-h-screen   ">
+    <main className=" flex flex-col min-h-screen   ">
       <WelcomeMessage />
       <Gallery />
       <PhotoSection />
