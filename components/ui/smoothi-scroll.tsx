@@ -1,13 +1,13 @@
+import React, { useRef } from "react";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import {
   motion,
   useMotionTemplate,
   useScroll,
   useTransform,
+  MotionValue,
 } from "framer-motion";
-import { SiSpacex } from "react-icons/si";
-import { FiArrowRight, FiMapPin } from "react-icons/fi";
-import { useRef } from "react";
+import { FiMapPin } from "react-icons/fi";
 import Link from "next/link";
 
 // Constants
@@ -28,7 +28,15 @@ interface ParallaxImgProps {
   end: number;
 }
 
-export const SmoothScrollHero = () => {
+interface ImageData {
+  src: string;
+  alt: string;
+  start: number;
+  end: number;
+  className: string;
+}
+
+export const SmoothScrollHero: React.FC = () => {
   return (
     <div className="bg-zinc-950">
       <ReactLenis
@@ -44,22 +52,20 @@ export const SmoothScrollHero = () => {
   );
 };
 
-const Hero = () => {
+const Hero: React.FC = () => {
   return (
     <div
       style={{ height: `calc(${SECTION_HEIGHT}px + 100vh)` }}
       className="relative w-full"
     >
       <CenterImage />
-
       <ParallaxImages />
-
       <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-zinc-950/0 to-zinc-950" />
     </div>
   );
 };
 
-const CenterImage = () => {
+const CenterImage: React.FC = () => {
   const { scrollY } = useScroll();
 
   const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
@@ -71,7 +77,8 @@ const CenterImage = () => {
     scrollY,
     [0, SECTION_HEIGHT + 500],
     ["170%", "100%"]
-  );
+  ) as MotionValue<string>;
+
   const opacity = useTransform(
     scrollY,
     [SECTION_HEIGHT, SECTION_HEIGHT + 500],
@@ -94,8 +101,8 @@ const CenterImage = () => {
   );
 };
 
-const ParallaxImages = () => {
-  const images = [
+const ParallaxImages: React.FC = () => {
+  const images: ImageData[] = [
     {
       src: "https://res.cloudinary.com/dlqfvjmpm/image/upload/v1725435713/winter/dgi0jlfauiiahpfpkzur.jpg",
       alt: "An example of a space launch",
@@ -124,7 +131,6 @@ const ParallaxImages = () => {
       end: -500,
       className: "ml-24 w-5/12",
     },
-
     // Add more images here as needed
   ];
 
@@ -144,8 +150,14 @@ const ParallaxImages = () => {
   );
 };
 
-const ParallaxImg = ({ className, alt, src, start, end }) => {
-  const ref = useRef(null);
+const ParallaxImg: React.FC<ParallaxImgProps> = ({
+  className,
+  alt,
+  src,
+  start,
+  end,
+}) => {
+  const ref = useRef<HTMLImageElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -169,7 +181,7 @@ const ParallaxImg = ({ className, alt, src, start, end }) => {
   );
 };
 
-const Schedule = () => {
+const Schedule: React.FC = () => {
   return (
     <section
       id="launch-schedule"
@@ -216,7 +228,6 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
         <Link className="mb-1.5 text-xl text-zinc-50" href={url}>
           {title}
         </Link>
-
         <p className="text-sm uppercase text-zinc-500">{date}</p>
       </div>
       <div className="flex items-center gap-1.5 text-end text-sm uppercase text-zinc-500">
@@ -226,3 +237,5 @@ const ScheduleItem: React.FC<ScheduleItemProps> = ({
     </motion.div>
   );
 };
+
+export default SmoothScrollHero;
