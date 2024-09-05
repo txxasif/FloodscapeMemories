@@ -24,7 +24,7 @@ const Header = () => {
           <Link href={"/"}>
             <AnimatedImage>
               {" "}
-              <p className="text-center text-6xl font-black text-neutral-50">
+              <p className="text-center text-3xl  md:text-6xl font-black text-neutral-50">
                 Floodscape
               </p>
             </AnimatedImage>
