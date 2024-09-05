@@ -5,7 +5,10 @@ import IntroText from "./ui/IntroText";
 const PhotoSection = () => {
   return (
     <div className="font-[sans-serif] px-4  ">
-      <IntroText bgColor="bg-none" borderColor="border-white" text="Members" />
+      <p className="text-center text-6xl font-black text-neutral-50 mt-20">
+        Members
+      </p>
+      {/* <IntroText bgColor="bg-none" borderColor="border-white" text="Members" /> */}
       <div className="lg:max-w-5xl sm:max-w-2xl mx-auto">
         <div className="grid lg:grid-cols-3 grid-cols-2 gap-8 max-sm:gap-12 max-md:justify-center mt-16">
           {photoSectionData.map((member, index) => (

@@ -47,11 +47,14 @@ export function Notifications({ className }: { className?: string }) {
         className
       )}
     >
-      <IntroText
+      {/* <IntroText
         bgColor="bg-none"
         borderColor="border-white"
         text="Conversation"
-      />
+      /> */}
+      <p className="text-center text-6xl font-black text-neutral-50">
+        Conversation
+      </p>
 
       <AnimatedList>
         {notifications.map((item, idx) => (
