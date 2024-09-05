@@ -15,7 +15,9 @@ export const Gallery = () => {
   return (
     <div className="flex flex-col space-y-4 md:space-y-10">
       {/* <IntroText bgColor="bg-none" borderColor="border-white" text="Photos" /> */}
-      <p className="text-center text-6xl font-black text-neutral-50">Photos</p>
+      <p className="text-center text-3xl md:text-6xl font-black text-neutral-50">
+        Photos
+      </p>
       <div className="mx-auto px-5 pt-10 lg:px-32 lg:pt-2">
         <div className="-m-1 flex flex-wrap md:-m-2">
           <div className="flex w-1/2 flex-wrap">

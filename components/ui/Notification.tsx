@@ -52,7 +52,7 @@ export function Notifications({ className }: { className?: string }) {
         borderColor="border-white"
         text="Conversation"
       /> */}
-      <p className="text-center text-6xl font-black text-neutral-50">
+      <p className="text-center text-3xl  md:text-6xl font-black text-neutral-50">
         Conversation
       </p>
 

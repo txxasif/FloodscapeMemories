@@ -5,10 +5,10 @@ const WelcomeMessage = () => {
   return (
     <main className="relative overflow-hidden">
       <div className="relative grid h-screen place-content-center space-y-6 bg-neutral-950 p-8">
-        <p className="text-center text-6xl font-black text-neutral-50">
+        <p className="text-center text-4xl md:text-6xl font-black text-neutral-50">
           Welcome to Floodscape Memories!
         </p>
-        <p className="text-center text-neutral-400">
+        <p className="text-justify md:text-center  text-neutral-400">
           {`  Floodscape Memories, a special place where we, as a
                 close-knit group of friends who feel like family, come together
                 to preserve our shared experiences. This website holds the

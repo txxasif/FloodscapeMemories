@@ -5,7 +5,7 @@ import IntroText from "./ui/IntroText";
 const PhotoSection = () => {
   return (
     <div className="font-[sans-serif] px-4  ">
-      <p className="text-center text-6xl font-black text-neutral-50 mt-20">
+      <p className="text-center text-3xl md:text-6xl font-black text-neutral-50 mt-20">
         Members
       </p>
       {/* <IntroText bgColor="bg-none" borderColor="border-white" text="Members" /> */}
