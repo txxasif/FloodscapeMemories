@@ -32,6 +32,16 @@ const config = {
           "0%, 100%": { opacity: "0.3" },
           "50%": { opacity: "1.2" },
         },
+        "clip-animation": {
+          "0%, 100%": {
+            "clip-path":
+              "polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%)",
+          },
+          "50%": {
+            "clip-path":
+              "polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%)",
+          },
+        },
         "fade-in-out-scale": {
           "0%, 100%": { opacity: "0.5", transform: "scale(1)" }, // Start and end with partial visibility and normal size
           "50%": { opacity: "1", transform: "scale(1.2)" }, // Fully visible and 20% larger at the midpoint
@@ -57,6 +67,16 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        wave: {
+          "0%, 100%": {
+            clipPath:
+              "polygon(0% 45%, 16% 44%, 33% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%)",
+          },
+          "50%": {
+            clipPath:
+              "polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%)",
+          },
+        },
         "border-beam": {
           "100%": {
             "offset-distance": "100%",
@@ -69,6 +89,9 @@ const config = {
         ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         pulse: "pulse var(--duration) ease-out infinite",
+        clip: "clip-animation 4s ease-in-out infinite",
+        "wave-text": "wave 4s ease-in-out infinite",
+
         "fade-in-out": "fade-in-out 2s ease-in-out infinite",
       },
     },
