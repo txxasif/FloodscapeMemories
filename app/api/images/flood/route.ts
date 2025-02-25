@@ -11,14 +11,16 @@ export async function GET() {
   let reducedImages: ImageProps[] = [];
   let i = 0;
   for (let result of images) {
-    reducedImages.push({
-      id: i,
-      height: result.height,
-      width: result.width,
-      public_id: result.public_id,
-      format: result.format,
-      version: result.version,
-    });
+    if (i !== 19 && i !== 20) {
+      reducedImages.push({
+        id: i,
+        height: result.height,
+        width: result.width,
+        public_id: result.public_id,
+        format: result.format,
+        version: result.version,
+      });
+    }
     i++;
   }
   const blurImagePromises = images.map((image: ImageProps) => {
